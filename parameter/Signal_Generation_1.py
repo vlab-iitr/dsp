@@ -3,9 +3,6 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 from scipy.stats import kurtosis, skew, mode
-import time
-
-import pyautogui
 
 # Function to compute signal statistics
 def compute_signal_statistics(signal):
