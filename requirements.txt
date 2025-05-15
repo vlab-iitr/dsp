@@ -1,0 +1,13 @@
+scikit-learn
+numpy
+ipywidgets
+matplotlib
+pandas
+sklearn_relief
+streamlit
+plotly
+scipy
+PyWavelets
+pyautogui
+scipy
+streamlit-option-menu
