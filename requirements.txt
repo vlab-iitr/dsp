@@ -8,6 +8,5 @@ streamlit
 plotly
 scipy
 PyWavelets
-pyautogui
 scipy
 streamlit-option-menu

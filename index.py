@@ -1,6 +1,6 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
-from streamlit.components.v1 import html
+# from streamlit.components.v1 import html
 
 from parameter.aim_parameter import aim1
 from parameter.pre_test import test1
@@ -13,6 +13,7 @@ from parameter.post_test import post1
 from parameter.post_test_ans import post_ans1
 from parameter.post_test_ans import post_warning1
 from parameter.refer_parameter import ref1
+from parameter.contributors import contri1
 
 from spectrum.aim_spectrum import aim2
 from spectrum.pre_test import test2
@@ -25,6 +26,7 @@ from spectrum.post_test import post2
 from spectrum.post_test_ans import post_ans2
 from spectrum.post_test_ans import post_warning2
 from spectrum.refer_spectrum import ref2
+from spectrum.contributors import contri2
 
 from auto.aim import aim3
 from auto.pretest import test3
@@ -37,6 +39,7 @@ from auto.post_test import post3
 from auto.post_test_ans import post_ans3
 from auto.post_test_ans import post_warning3
 from auto.references import ref3
+from auto.contributors import contri3
 
 from convolution.aim import aim4
 from convolution.pretest import test4
@@ -49,6 +52,7 @@ from convolution.post_test import post4
 from convolution.post_test_ans import post_ans4
 from convolution.post_test_ans import post_warning4
 from convolution.references import ref4
+from convolution.contributors import contri4
 
 from transform.aim import aim5
 from transform.pretest import test5
@@ -61,6 +65,7 @@ from transform.post_test import post5
 from transform.post_test_ans import post_ans5
 from transform.post_test_ans import post_warning5
 from transform.references import ref5
+from transform.contributors import contri5
 
 from filters.aim import aim6
 from filters.pretest import test6
@@ -73,6 +78,7 @@ from filters.post_test import post6
 from filters.post_test_ans import post_ans6
 from filters.post_test_ans import post_warning6
 from filters.references import ref6
+from filters.contributors import contri6
 
 from modulation.aim import aim7
 from modulation.pretest import test7
@@ -85,6 +91,7 @@ from modulation.post_test import post7
 from modulation.post_test_ans import post_ans7
 from modulation.post_test_ans import post_warning7
 from modulation.references import ref7
+from modulation.contributors import contri7
 
 
 st.set_page_config(layout="wide")
@@ -113,7 +120,7 @@ selected_option = option_menu(
     menu_icon="cast",  # Icon for the menu itself
     default_index=0,  # Set the default selected option
     #default_index=["Statistical Parameters","Power Spectrum","Convolution","Transforms","Filters","Modulation"].index(st.session_state.selected_option),  # Set default based on session state
-    orientation="horizontal",  # Menu orientation ("horizontal" or "vertical"),
+    orientation="horizontal",  
     styles={
         "container":{"padding":"0!important", },
         "nav-link":{
@@ -405,6 +412,17 @@ if selected_option == "Statistical Parameters":
         st.session_state.pre_ans1 = False
         st.session_state.post_ans1 = False
     
+    Contributors = st.sidebar.button('Contributors', key='Contributors')
+    if Contributors:
+        st.session_state.active_button = 'Contributors'
+        contri1()
+        clicked=True
+        st.session_state.simulation_clicked1 = False
+        st.session_state.pre_clicked1 = False
+        st.session_state.post_clicked1 = False 
+        st.session_state.pre_ans1 = False
+        st.session_state.post_ans1 = False
+        
     References = st.sidebar.button('References', key='References')
     if References:
         st.session_state.active_button = 'References'
@@ -415,7 +433,7 @@ if selected_option == "Statistical Parameters":
         st.session_state.post_clicked1 = False 
         st.session_state.pre_ans1 = False
         st.session_state.post_ans1 = False
-    
+
     # Content for dsp_simulator() should go below the sidebar content
     if getattr(st.session_state, 'simulation_clicked1', False):
         clicked=True
@@ -574,6 +592,17 @@ elif selected_option == "Power Spectrum":
         st.session_state.pre_ans2 = False
         st.session_state.post_ans2 = False
     
+    Contributors = st.sidebar.button('Contributors', key='Contributors2')
+    if Contributors:
+        st.session_state.active_button = 'Contributors2'
+        contri2()
+        clicked=True
+        st.session_state.simulation_clicked2 = False 
+        st.session_state.pre_clicked2 = False
+        st.session_state.post_clicked2 = False 
+        st.session_state.pre_ans2 = False
+        st.session_state.post_ans2 = False
+
     References = st.sidebar.button('References', key='References2')
     if References:
         st.session_state.active_button = 'References2'
@@ -584,6 +613,8 @@ elif selected_option == "Power Spectrum":
         st.session_state.post_clicked2 = False 
         st.session_state.pre_ans2 = False
         st.session_state.post_ans2 = False
+
+
     if getattr(st.session_state, 'simulation_clicked2', False):
         clicked=True
         dsp_simulator2()
@@ -741,6 +772,17 @@ elif selected_option == "Autocorrelation":
         st.session_state.pre_ans3 = False
         st.session_state.post_ans3 = False
     
+    Contributors = st.sidebar.button('Contributors', key='Contributors3')
+    if Contributors:
+        st.session_state.active_button = 'Contributors3'
+        contri3()
+        clicked=True
+        st.session_state.simulation_clicked3 = False 
+        st.session_state.pre_clicked3 = False
+        st.session_state.post_clicked3 = False 
+        st.session_state.pre_ans3 = False
+        st.session_state.post_ans3 = False
+
     References = st.sidebar.button('References', key='References3')
     if References:
         st.session_state.active_button = 'References3'
@@ -912,6 +954,17 @@ elif selected_option == "Convolution":
         st.session_state.pre_ans4 = False
         st.session_state.post_ans4 = False
     
+    Contributors = st.sidebar.button('Contributors', key='Contributors4')
+    if Contributors:
+        st.session_state.active_button = 'Contributors4'
+        contri4()
+        clicked=True
+        st.session_state.pre_clicked4 = False
+        st.session_state.post_clicked4 = False 
+        st.session_state.simulation_clicked4 = False
+        st.session_state.pre_ans4 = False
+        st.session_state.post_ans4 = False
+
     References = st.sidebar.button('References', key='References4')
     if References:
         st.session_state.active_button = 'References4'
@@ -1083,6 +1136,17 @@ elif selected_option == "Transforms":
         st.session_state.pre_ans5 = False
         st.session_state.post_ans5 = False
     
+    Contributors = st.sidebar.button('Contributors', key='Contributors5')
+    if Contributors:
+        st.session_state.active_button = 'Contributors5'
+        contri5()
+        clicked=True
+        st.session_state.pre_clicked5 = False
+        st.session_state.post_clicked5 = False 
+        st.session_state.simulation_clicked5 = False
+        st.session_state.pre_ans5 = False
+        st.session_state.post_ans5 = False
+
     References = st.sidebar.button('References', key='References5')
     if References:
         st.session_state.active_button = 'References5'
@@ -1094,6 +1158,7 @@ elif selected_option == "Transforms":
         st.session_state.pre_ans5 = False
         st.session_state.post_ans5 = False
 
+    
         # Content for dsp_simulator() should go below the sidebar content
     if getattr(st.session_state, 'simulation_clicked5', False):
         clicked = True  
@@ -1254,6 +1319,17 @@ elif selected_option == "Filters":
         st.session_state.pre_ans6 = False
         st.session_state.post_ans6 = False
     
+    Contributors = st.sidebar.button('Contributors', key='Contributors6')
+    if Contributors:
+        st.session_state.active_button = 'Contributors6'
+        contri6()
+        clicked=True
+        st.session_state.pre_clicked6 = False
+        st.session_state.post_clicked6 = False 
+        st.session_state.simulation_clicked6 = False
+        st.session_state.pre_ans6 = False
+        st.session_state.post_ans6 = False
+
     References = st.sidebar.button('References', key='References6')
     if References:
         st.session_state.active_button = 'References6'
@@ -1264,6 +1340,8 @@ elif selected_option == "Filters":
         st.session_state.simulation_clicked6 = False
         st.session_state.pre_ans6 = False
         st.session_state.post_ans6 = False
+
+    
 
         # Content for dsp_simulator() should go below the sidebar content
     
@@ -1426,6 +1504,17 @@ elif selected_option == "Modulation":
         st.session_state.pre_ans7 = False
         st.session_state.post_ans7 = False
     
+    Contributors = st.sidebar.button('Contributors', key='Contributors7')
+    if Contributors:
+        st.session_state.active_button = 'Contributors7'
+        contri7()
+        clicked=True
+        st.session_state.pre_clicked7 = False
+        st.session_state.post_clicked7 = False
+        st.session_state.simulation_clicked7 = False 
+        st.session_state.pre_ans7 = False
+        st.session_state.post_ans7 = False
+
     References = st.sidebar.button('References', key='References7')
     if References:
         st.session_state.active_button = 'References7'
@@ -1436,8 +1525,8 @@ elif selected_option == "Modulation":
         st.session_state.simulation_clicked7 = False 
         st.session_state.pre_ans7 = False
         st.session_state.post_ans7 = False
-    
-    
+
+
     # Content for dsp_simulator() should go below the sidebar content
     if getattr(st.session_state, 'simulation_clicked7', False):
         clicked = True  # Reset the flag
@@ -1575,6 +1664,17 @@ elif st.session_state.active_button == 'Posttest':
 
         st.markdown(cs, unsafe_allow_html=True) 
 
+elif st.session_state.active_button == 'Contributors':
+        cs="""
+         <style>
+         .st-key-Contributors>.stButton>button {
+        background-color: #035F8A; 
+            color: white;
+            border-color: #035F8A;
+        }</style>"""
+
+        st.markdown(cs, unsafe_allow_html=True) 
+
 elif st.session_state.active_button == 'References':
         cs="""
          <style>
@@ -1646,6 +1746,17 @@ elif st.session_state.active_button == 'Posttest2':
         cs="""
          <style>
          .st-key-Posttest2>.stButton>button {
+        background-color: #035F8A; 
+            color: white;
+            border-color: #035F8A;
+        }</style>"""
+
+        st.markdown(cs, unsafe_allow_html=True) 
+
+elif st.session_state.active_button == 'Contributors2':
+        cs="""
+         <style>
+         .st-key-Contributors2>.stButton>button {
         background-color: #035F8A; 
             color: white;
             border-color: #035F8A;
@@ -1730,6 +1841,19 @@ elif st.session_state.active_button == 'Posttest3':
 
         st.markdown(cs, unsafe_allow_html=True) 
 
+
+elif st.session_state.active_button == 'Contributors3':
+        cs="""
+         <style>
+         .st-key-Contributors3>.stButton>button {
+        background-color: #035F8A; 
+            color: white;
+            border-color: #035F8A;
+        }</style>"""
+
+        st.markdown(cs, unsafe_allow_html=True) 
+
+
 elif st.session_state.active_button == 'References3':
         cs="""
         <style>
@@ -1739,8 +1863,6 @@ elif st.session_state.active_button == 'References3':
                     border-color: #035F8A;
                 }</style>"""
         st.markdown(cs, unsafe_allow_html=True) 
-
-
 
 if st.session_state.active_button == 'aim4':
         cs="""
@@ -1808,6 +1930,17 @@ elif st.session_state.active_button == 'Posttest4':
 
         st.markdown(cs, unsafe_allow_html=True) 
 
+elif st.session_state.active_button == 'Contributors4':
+        cs="""
+         <style>
+         .st-key-Contributors4>.stButton>button {
+        background-color: #035F8A; 
+            color: white;
+            border-color: #035F8A;
+        }</style>"""
+
+        st.markdown(cs, unsafe_allow_html=True)
+
 elif st.session_state.active_button == 'References4':
         cs="""
         <style>
@@ -1818,8 +1951,7 @@ elif st.session_state.active_button == 'References4':
                 }</style>"""
         st.markdown(cs, unsafe_allow_html=True) 
 
-
-
+ 
 if st.session_state.active_button == 'aim5':
         cs="""
          <style>
@@ -1886,6 +2018,18 @@ elif st.session_state.active_button == 'Posttest5':
 
         st.markdown(cs, unsafe_allow_html=True) 
 
+
+elif st.session_state.active_button == 'Contributors5':
+        cs="""
+         <style>
+         .st-key-Contributors5>.stButton>button {
+        background-color: #035F8A; 
+            color: white;
+            border-color: #035F8A;
+        }</style>"""
+
+        st.markdown(cs, unsafe_allow_html=True)
+
 elif st.session_state.active_button == 'References5':
         cs="""
         <style>
@@ -1895,8 +2039,7 @@ elif st.session_state.active_button == 'References5':
                     border-color: #035F8A;
                 }</style>"""
         st.markdown(cs, unsafe_allow_html=True) 
-
-
+ 
 
 if st.session_state.active_button == 'aim6':
         cs="""
@@ -1957,6 +2100,17 @@ elif st.session_state.active_button == 'Posttest6':
         cs="""
          <style>
          .st-key-Posttest6>.stButton>button {
+        background-color: #035F8A; 
+            color: white;
+            border-color: #035F8A;
+        }</style>"""
+
+        st.markdown(cs, unsafe_allow_html=True) 
+
+elif st.session_state.active_button == 'Contributors6':
+        cs="""
+         <style>
+         .st-key-Contributors6>.stButton>button {
         background-color: #035F8A; 
             color: white;
             border-color: #035F8A;
@@ -2041,6 +2195,18 @@ elif st.session_state.active_button == 'Posttest7':
 
         st.markdown(cs, unsafe_allow_html=True) 
 
+
+elif st.session_state.active_button == 'Contributors7':
+        cs="""
+         <style>
+         .st-key-Contributors7>.stButton>button {
+        background-color: #035F8A; 
+            color: white;
+            border-color: #035F8A;
+        }</style>"""
+
+        st.markdown(cs, unsafe_allow_html=True)
+
 elif st.session_state.active_button == 'References7':
         cs="""
         <style>
@@ -2050,3 +2216,5 @@ elif st.session_state.active_button == 'References7':
                     border-color: #035F8A;
                 }</style>"""
         st.markdown(cs, unsafe_allow_html=True) 
+
+ 

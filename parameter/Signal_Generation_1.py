@@ -3,9 +3,7 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 from scipy.stats import kurtosis, skew, mode
-import time
 
-import pyautogui
 
 # Function to compute signal statistics
 def compute_signal_statistics(signal):
@@ -24,14 +22,16 @@ def compute_signal_statistics(signal):
     
     # Convert the statistics dictionary to a DataFrame
     statistics_df = pd.DataFrame(statistics.items(), columns=['Statistic', 'Value'])
-
+    statistics_df.index = statistics_df.index + 1
+    statistics_df.index.name = "S. No."
+    
     # Apply styling to the DataFrame
     styled_df = statistics_df.style.set_table_styles(
     [
      {'selector': 'th', 'props': [('background-color', '#035F8A'), ('color', 'white'),('font-weight', 'bold'),('text-align','center'),('border-color','rgb(240, 242, 246)')]},  # Header styling
      {'selector': 'td', 'props': [('background-color', 'rgb(240, 242, 246)'),('border-color','#035F8A')]}]                         # Cell styling         
 )
-
+    
     st.table(styled_df)
   
     return statistics
